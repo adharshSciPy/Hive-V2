@@ -22,9 +22,7 @@ const Router = () => {
             if (token) {
                 await tokenVerify({ token });
                 if (isSuccess) {
-                    console.log('sucess')
                     let role = data?.data?.role;
-                    console.log('role', role)
                     dispatch(setLoggedIn({ boolean: true }));
                     dispatch(setRole({ role }))
                     if (role) {
@@ -39,8 +37,6 @@ const Router = () => {
             }
         } catch (error) {
             console.error('Error verifying token:', error);
-            // dispatch(setLogout())
-            // dispatch(setLoggedIn({ boolean: false }));
         }
     };
 
@@ -94,7 +90,6 @@ const Router = () => {
     const element = useRoutes([
         {
             path: '/',
-            // element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><LandingPage /></ForceRedirect>
             element: <LandingPage />
         },
         {

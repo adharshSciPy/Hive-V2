@@ -57,7 +57,6 @@ const Login = () => {
     try {
       const res = await login({ email, password }).unwrap();
       const token = res?.token
-      console.log('token', token)
       toast.success('Logged In Successfully');
       dispatch(setCredentials({ token }));
     } catch (err) {

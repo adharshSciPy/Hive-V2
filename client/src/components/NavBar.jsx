@@ -6,15 +6,22 @@ import Navlink from './Navlink';
 import { setLogout } from '../slices/state/authSlices';
 import { useLogoutMutation } from '../slices/api/userApiSlice';
 
-const userNavLinks = [
-  { url: 'user/home', title: 'Home' },
-  { url: 'user/bookings', title: 'Bookings' }
+const studentNavLinks = [
+  { url: '#', title: 'class' },
+  { url: '#', title: 'post' },
+  { url: '#', title: 'certificate' },
 ]
 
 const adminNavLinks = [
-  { url: 'admin/admin-home-view', title: 'Home' },
-  { url: 'admin/admin-bookings-view', title: 'Bookings' },
-  { url: 'admin/admin-users-view', title: 'Users' }
+  { url: 'admin/admin-public-list', title: 'Public' },
+  { url: 'admin/admin-student-list', title: 'Students' },
+  { url: 'admin/admin-post-list', title: 'Posts' }
+]
+
+const publicNavLinks = [
+  { url: 'public/public-course', title: 'Course' },
+  { url: 'public/public-certificate', title: 'certificate' },
+  { url: 'public/public-post', title: 'Posts' }
 ]
 
 const authLinks = [
@@ -37,8 +44,11 @@ const Navbar = () => {
     if (isLoggedIn && userRole === 'admin') {
       setLinks(adminNavLinks)
     }
-    else if (isLoggedIn && userRole === 'user') {
-      setLinks(userNavLinks)
+    else if (isLoggedIn && userRole === 'student') {
+      setLinks(studentNavLinks)
+    }
+    else if (isLoggedIn && userRole === 'public') {
+      setLinks(publicNavLinks)
     }
     else {
       setLinks([])

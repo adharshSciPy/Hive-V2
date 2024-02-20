@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useVerifyTokenMutation } from "../slices/api/userApiSlice";
-import { setLoggedIn } from "../slices/state/authSlices";
+import { setLoggedIn, setRole } from "../slices/state/authSlices";
 
 
 const ForceRedirect = ({ isLoggedIn, role, children }) => {
