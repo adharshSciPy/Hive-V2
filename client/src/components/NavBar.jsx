@@ -72,7 +72,7 @@ const Navbar = () => {
     <div className={`${isLoggedIn && 'shadow-md'} z-10 mb-0 min-h-100 h-20 w-screen bg-white sticky top-0  flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 xl:text-xl`}>
 
       {/* logo */}
-      <div onClick={() => navigate('/')} className='flex w-1/4'>
+      <div className='flex w-1/4'>
         <Link className='rounded-md p-1 text-sm font-semibold flex items-center justify-center md:text-lg text-zinc-500 hover:text-violet-500'>
           HIVE
         </Link>
