@@ -44,7 +44,6 @@ const Router = () => {
         }
     };
 
-
     useEffect(() => {
         verifyToken();
     }, [dispatch, token, tokenVerify, isLoggedIn]);

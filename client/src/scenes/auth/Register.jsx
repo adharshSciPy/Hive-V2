@@ -34,7 +34,6 @@ const Register = () => {
 
   useEffect(() => {
     const isEmptyFields = [fullname, email, password, confirmPassword].some((field) => field?.trim() === "")
-    console.log('status', fullname, email, password)
     if (!isEmptyFields && isValidEmail && isValidPassword && isValidConfirmpassword) {
       setIsDisabled(false)
     }
@@ -76,13 +75,13 @@ const Register = () => {
 
     try {
       const res = await register({ fullname, email, password }).unwrap();
-      toast.success(res?.message);
+      toast.success(res?.message ? res?.message : 'Registration Succesfull');
       navigate('/login');
 
     }
     catch (err) {
       console.log('err', err)
-      toast.error(err?.data?.message)
+      toast.error(err?.data?.message ? err?.data?.message : 'Registration Failed')
     }
   }
 
@@ -93,13 +92,12 @@ const Register = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className='h-screen w-full flex items-center justify-center bg-gradient-to-b from-white to-violet-200'>
-      <div className='h-[60%] w-[80%] md:w-[60%] bg-white flex items-center justify-center'>
-        <div className='hidden md:flex bg-violet-200 h-full flex-1  items-center justify-center overflow-hidden'>
-          <img src={registerImage} alt="" className='h-full object-cover' />
+      <div className='min-h-[50%] h-auto overflow-hidden flex bg-white'>
+        <div className='hidden md:flex bg-violet-200 min-h-full w-[60%] flex-1 items-center justify-center overflow-hidden'>
+          <img src={registerImage} alt="" className='h-full w-full object-cover' />
         </div>
 
-        <div className='h-full flex-1 flex flex-col items-center justify-between p-1 md:p-10'>
-
+        <div className='h-full flex-1 flex flex-col gap-5 items-center justify-between p-1 md:p-10'>
           <div className='w-[60%]'>
             <p className='text-2xl font-extralight text-violet-400 mt-10'>Create Account</p>
             <p className='text-xs font-bold text-violet-400'>Create Your free Account</p>
