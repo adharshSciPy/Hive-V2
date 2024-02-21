@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   register: async (req, res, next) => {
-    const { fullName, role, email, password, gender, dob, college, course } =
+    const { fullname, role, email, password, gender, dob, college, course } =
       req.body;
 
     try {
@@ -18,20 +18,21 @@ module.exports = {
         res.status(400).json({ message: "User already Existed" });
       }
       await User.create({
-        fullName,
-        role,
+        fullName: fullname,
+        role: 'public',
         email,
         password: hashedPassword,
         gender,
         dob,
         college,
         course,
-        imageName: req.file ? req.file.filename : null, // push file object to array
+        // imageName: req.file ? req.file.filename : null, // push file object to array
       });
-      res.status(200).json({ message: "User added to mongodb succesfully" });
+      res.status(200).json({ message: "Registered Succesfully" });
       next();
     } catch (err) {
       res.status(500).json({ message: "Server Error" });
+      throw err;
     }
   },
 
@@ -91,13 +92,30 @@ module.exports = {
   verifyToken: async (req, res) => {
     const { token } = req.body;
     try {
-      const verify = jwt.verify(token, "IamGreat");
-      if (!verify) {
-        res.status(400).json({ message: "Verification failed" });
+      if (!token) {
+        return res.status(401).json({ message: 'No token provided' });
       }
-      res.status(200).json({ message: "Verification Success" });
+      jwt.verify(token, "IamGreat", (err, decoded) => {
+        if (err) {
+          console.log('error..', err)
+          if (err.name === 'TokenExpiredError') {
+            return res.status(401).json({ message: 'Token expired' });
+          } else {
+            return res.status(401).json({ message: 'Invalid token' });
+          }
+        }
+        else {
+          if (decoded) {
+            return res.status(200).json({ message: 'Token verification success', data: decoded })
+          }
+          console.log('respoinse', decoded)
+        }
+      });
+
     } catch (err) {
-      res.status(500).json({ message: "Server Error" });
+      console.log('err', err)
+      console.error(err);
+      return res.status(500).json({ message: 'Server Error' });
     }
   },
 

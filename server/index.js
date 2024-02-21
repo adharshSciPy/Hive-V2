@@ -23,21 +23,21 @@ app.use(cors());
 // app.use('/public', express.static(__dirname + '/uploads'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use("/user", userRouter);
-app.use("/public", publicRouter);
-app.use('/admin', adminRouter);
-app.use('/student', studentRouter);
-app.use('/chat', chatRoute)
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/public", publicRouter);
+app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/student', studentRouter);
+app.use('/api/v1/chat', chatRoute)
 
 // Start the server
-const server = app.listen(5000, () => {
-  console.log('Server listening on port 5000');
+const server = app.listen(8000, () => {
+  console.log('Server listening on port 8000');
 });
 
 // chat socket.io logic
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5173',
     credentials: true
   }
 })
