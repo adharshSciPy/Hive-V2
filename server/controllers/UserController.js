@@ -108,7 +108,6 @@ module.exports = {
           if (decoded) {
             return res.status(200).json({ message: 'Token verification success', data: decoded })
           }
-          console.log('respoinse', decoded)
         }
       });
 
