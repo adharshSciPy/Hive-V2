@@ -80,7 +80,7 @@ const Router = () => {
     const element = useRoutes([
         {
             path: '/',
-            element: <LandingPage />
+            element: <ForceRedirect isLoggedIn={isLoggedIn}><LandingPage /></ForceRedirect>
         },
         {
             path: "/login",

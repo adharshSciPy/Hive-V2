@@ -12,19 +12,19 @@ const ForceRedirect = ({ isLoggedIn, role, children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  const [tokenVerify, { data }] = useVerifyTokenMutation();
-  const token = localStorage.getItem('token')
+  const [tokenVerify, { isSuccess, data }] = useVerifyTokenMutation();
+  const token = JSON.parse(localStorage.getItem('token'))
 
   const verifyToken = async () => {
     try {
+      console.log('token just before', token)
       if (token) {
         await tokenVerify({ token });
-          let role = data?.data?.role;
+        let role = data?.data?.role;
+        if (isSuccess) {
           dispatch(setLoggedIn({ boolean: true }));
           dispatch(setRole({ role }))
-          if (role) {
-            navigate(`/${role}`)
-          }
+        }
       }
     } catch (error) {
       console.error('Error verifying token:', error);
@@ -36,7 +36,7 @@ const ForceRedirect = ({ isLoggedIn, role, children }) => {
 
   useEffect(() => {
     verifyToken();
-  }, []);
+  }, [token, isSuccess]);
 
   useEffect(() => {
     if (role === 'public') {
