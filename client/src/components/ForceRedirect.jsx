@@ -17,7 +17,6 @@ const ForceRedirect = ({ isLoggedIn, role, children }) => {
 
   const verifyToken = async () => {
     try {
-      console.log('token just before', token)
       if (token) {
         await tokenVerify({ token });
         let role = data?.data?.role;
@@ -54,7 +53,7 @@ const ForceRedirect = ({ isLoggedIn, role, children }) => {
   }, [role])
 
   if (isLoggedIn && role !== null || undefined) {
-    return <Navigate to={`/${routePath}`} replace />
+    return <Navigate to={`/${routePath}`} />
   }
 
   return children;

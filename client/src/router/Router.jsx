@@ -47,41 +47,41 @@ const Router = () => {
 
     const studentRoutes = [
         {
-            path: "/student/student-home",
+            path: "/student-home",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><Home /></ProtectedRoute>
         },
         {
-            path: "/student/student-bookings",
+            path: "/student-bookings",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><Bookings /></ProtectedRoute>
         }
     ];
 
     const adminRoutes = [
         {
-            path: "/admin/admin-public-list",
+            path: "/admin-public-list",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminPublicList /></ProtectedRoute>
         },
         {
-            path: "/admin/admin-student-list",
+            path: "/admin-student-list",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminStudentList /></ProtectedRoute>
         },
         {
-            path: "/admin/admin-post-list",
+            path: "/admin-post-list",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminPostList /></ProtectedRoute>
         }
     ];
 
     const publicRoutes = [
         {
-            path: "/public/public-course",
+            path: "public-course",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicCourse /></ProtectedRoute>
         },
         {
-            path: "/public/public-certificate",
+            path: "public-certificate",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicCertificate /></ProtectedRoute>
         },
         {
-            path: "/public/public-post",
+            path: "public-post",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicPost /></ProtectedRoute>
         }
     ];
@@ -103,7 +103,7 @@ const Router = () => {
         {
             path: "/admin",
             element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminLayout /></ProtectedRoute>,
-            children: [...adminRoutes]
+            children: [adminRoutes]
         },
         {
             path: "/student",

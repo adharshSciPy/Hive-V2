@@ -13,15 +13,15 @@ const studentNavLinks = [
 ]
 
 const adminNavLinks = [
-  { url: 'admin/admin-public-list', title: 'Public' },
-  { url: 'admin/admin-student-list', title: 'Students' },
-  { url: 'admin/admin-post-list', title: 'Posts' }
+  { url: '/admin/admin-public-list', title: 'Public' },
+  { url: '/admin/admin-student-list', title: 'Students' },
+  { url: '/admin/admin-post-list', title: 'Posts' }
 ]
 
 const publicNavLinks = [
-  { url: 'public/public-course', title: 'Course' },
-  { url: 'public/public-certificate', title: 'certificate' },
-  { url: 'public/public-post', title: 'Posts' }
+  { url: '/public/public-course', title: 'Course' },
+  { url: '/public/public-certificate', title: 'Certificate' },
+  { url: '/public/public-post', title: 'Posts' }
 ]
 
 const authLinks = [
