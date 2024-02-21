@@ -7,9 +7,10 @@ import { setLogout } from '../slices/state/authSlices';
 import { useLogoutMutation } from '../slices/api/userApiSlice';
 
 const studentNavLinks = [
-  { url: '#', title: 'class' },
-  { url: '#', title: 'post' },
-  { url: '#', title: 'certificate' },
+  { url: '/student/student-home', title: 'Home' },
+  { url: '/student/student-class', title: 'Class' },
+  { url: '/student/student-post', title: 'Post' },
+  { url: '/student/student-certificate', title: 'Certificates' },
 ]
 
 const adminNavLinks = [

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
-import { Home, Login, Register, Bookings, LandingPage, AdminHome, AdminBookings, AdminUsers, PublicCertificate, PublicCourse, PublicPost, AdminPostList, AdminPublicList, AdminStudentList } from '../scenes';
+import { StudentHome, StudentPost, StudentCertificate, Login, Register, StudentClass, LandingPage, PublicCertificate, PublicCourse, PublicPost, AdminPostList, AdminPublicList, AdminStudentList } from '../scenes';
 import { AdminLayout, UserLayout, PublicLayout } from '../layout'
 import { ForceRedirect, ProtectedRoute } from '../components';
 import { useVerifyTokenMutation } from '../slices/api/userApiSlice';
@@ -48,11 +48,19 @@ const Router = () => {
     const studentRoutes = [
         {
             path: "/student-home",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><Home /></ProtectedRoute>
+            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentHome /></ProtectedRoute>
         },
         {
-            path: "/student-bookings",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><Bookings /></ProtectedRoute>
+            path: "/student-class",
+            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentClass /></ProtectedRoute>
+        },
+        {
+            path: "/student-post",
+            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentPost /></ProtectedRoute>
+        },
+        {
+            path: "/student-certificate",
+            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentCertificate /></ProtectedRoute>
         }
     ];
 

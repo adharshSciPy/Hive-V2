@@ -1,6 +1,3 @@
-export { default as Home } from './students/HomePage';
-export { default as Bookings } from './students/Bookings';
-export { default as BookingCard } from './students/BookingCard';
 export { default as LandingPage } from './students/LandingPage';
 export { default as AdminHome } from './admin/AdminHome';
 export { default as AdminBookings } from './admin/AdminBookings';
@@ -13,3 +10,7 @@ export { default as PublicPost } from './public/post/PublicPost';
 export { default as AdminPostList } from './admin/AdminPostList';
 export { default as AdminPublicList } from './admin/AdminPublicList';
 export { default as AdminStudentList } from './admin/AdminStudentList';
+export { default as StudentCertificate } from './students/StudentCertificate';
+export { default as StudentClass } from './students/StudentClass';
+export { default as StudentHome } from './students/StudentHome';
+export { default as StudentPost } from './students/StudentPost';

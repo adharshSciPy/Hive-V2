@@ -19,7 +19,7 @@ module.exports = {
       }
       await User.create({
         fullName: fullname,
-        role: 'public',
+        role: 'student',
         email,
         password: hashedPassword,
         gender,
