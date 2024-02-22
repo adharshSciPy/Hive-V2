@@ -1,8 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion";
 
 const StudentLayout = () => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    console.log('run')
+    navigate('/student-home')
+  }, [])
   return (
     <motion.div
       initial={{ opacity: 0 }}

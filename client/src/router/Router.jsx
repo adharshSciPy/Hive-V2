@@ -31,7 +31,7 @@ const Router = () => {
                 }
                 else if (isError) {
                     console.log('error')
-                    navigate('/')
+                    // navigate('/')
                 }
 
             }
@@ -48,49 +48,49 @@ const Router = () => {
     const studentRoutes = [
         {
             path: "/student-home",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentHome /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><StudentHome /></ForceRedirect>
         },
         {
             path: "/student-class",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentClass /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><StudentClass /></ForceRedirect>
         },
         {
             path: "/student-post",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentPost /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><StudentPost /></ForceRedirect>
         },
         {
             path: "/student-certificate",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentCertificate /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><StudentCertificate /></ForceRedirect>
         }
     ];
 
     const adminRoutes = [
         {
             path: "/admin-public-list",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminPublicList /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><AdminPublicList /></ForceRedirect>
         },
         {
             path: "/admin-student-list",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminStudentList /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><AdminStudentList /></ForceRedirect>
         },
         {
             path: "/admin-post-list",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminPostList /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><AdminPostList /></ForceRedirect>
         }
     ];
 
     const publicRoutes = [
         {
             path: "public-course",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicCourse /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><PublicCourse /></ForceRedirect>
         },
         {
             path: "public-certificate",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicCertificate /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><PublicCertificate /></ForceRedirect>
         },
         {
             path: "public-post",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicPost /></ProtectedRoute>
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><PublicPost /></ForceRedirect>
         }
     ];
 
@@ -110,17 +110,17 @@ const Router = () => {
         },
         {
             path: "/admin",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><AdminLayout /></ProtectedRoute>,
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><AdminLayout /></ForceRedirect>,
             children: [adminRoutes]
         },
         {
             path: "/student",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><StudentLayout /></ProtectedRoute>,
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><StudentLayout /></ForceRedirect>,
             children: [...studentRoutes]
         },
         {
             path: "/public",
-            element: <ProtectedRoute isLoggedIn={isLoggedIn} role={userRole}><PublicLayout /></ProtectedRoute>,
+            element: <ForceRedirect isLoggedIn={isLoggedIn} role={userRole}><PublicLayout /></ForceRedirect>,
             children: [...publicRoutes]
         },
     ]);
